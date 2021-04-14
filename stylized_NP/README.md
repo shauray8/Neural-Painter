@@ -1,4 +1,4 @@
-Trying Universal Style Transfer 
+## Trying Universal Style Transfer 
 
 i was thinking can i impliment cycle gan, maybe later i'll try it for fun
 and with the current method in this [paper](https://arxiv.org/pdf/1705.08086.pdf) 
