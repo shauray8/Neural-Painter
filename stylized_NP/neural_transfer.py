@@ -13,8 +13,8 @@ from utils import *
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 path = "../../data/style_transfer/image/"
-style_img = img_loader("./Albrecht_Dürer_10.jpg", device)
-content_img = img_loader("./El_Greco_1.jpg", device)
+style_img = img_loader("./test_img/Albrecht_Dürer_10.jpg", device)
+content_img = img_loader("./test_img/El_Greco_1.jpg", device)
 
 print(style_img.shape)
 print(content_img.shape)
