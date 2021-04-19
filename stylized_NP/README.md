@@ -2,6 +2,13 @@
 
 i was thinking can i impliment cycle gan, maybe later i'll try it for fun
 and with the current method in this [paper](https://arxiv.org/pdf/1705.08086.pdf) 
+<br/>
+here is the loss (i dont know if it is good wnough or i have to do some optimization)
+
+![](./loss.png)
+
+
+---
 i think i can make a webapp for style transfer with transfering style with respect to 
 the artist of choice like 
 
