@@ -6,12 +6,14 @@ import numpy as np
 from PIL import Image 
 import matplotlib.pyplot as plt
 import torchvision.transforms as transforms
+import torch.optim as optim
 
 imsize = 512
 
 loader = transforms.Compose([
     transforms.Resize(imsize),
-    transforms.ToTensor()])
+    transforms.ToTensor(),
+    transforms.RandomCrop(512,512)])
 
 def img_loader(image_name, device):
     image = Image.open(image_name)
@@ -33,7 +35,7 @@ def imshow(tensor, title=None):
 
 class ContentLoss(nn.Module):
     def __init__(self, target):
-        super(ContenLoss, self).__init__()
+        super(ContentLoss, self).__init__()
         self.target = target.detach()
 
     def forward(self, input):
@@ -50,9 +52,9 @@ def gram_matrix(input):
     return G.div(a*b*c*d)
 
 
-class styleLoss(nn.Module):
-    def __init__(self, target_featur):
-        super(styleLoss, self).__init__()
+class StyleLoss(nn.Module):
+    def __init__(self, target_features):
+        super(StyleLoss, self).__init__()
 
         self.target = gram_matrix(target_features).detach()
 
@@ -62,14 +64,20 @@ class styleLoss(nn.Module):
         return input
 
 class Normalization(nn.Module):
-    def __init__(selfm mean, std):
+    def __init__(self, mean, std):
         super(Normalization, self).__init__()
 
-        self.mean = torch.tensor[(mean)].view(-1,1,1)
-        self.std = torch.tensor([std]).view(-1,1,1)
+        self.mean = torch.tensor(mean).view(-1,1,1)
+        self.std = torch.tensor(std).view(-1,1,1)
 
     def forward(self, img):
         return (img - self.mean) / self.std
+
+
+content_layers_default = ['conv_4']
+style_layers_default = ['conv_1', 'conv_2', 'conv_3', 'conv_4', 'conv_5']
+device = "cpu"
+
 
 def get_style_model_and_losses(cnn, normalization_mean, normalization_std,
                                style_img, content_img,
@@ -79,8 +87,8 @@ def get_style_model_and_losses(cnn, normalization_mean, normalization_std,
     cnn = copy.deepcopy(cnn)
     normalization = Normalization(normalization_mean, normalization_std).to(device)
 
-    content_loss = []
-    style_loss = []
+    content_losses = []
+    style_losses = []
 
     model = nn.Sequential(normalization)
 
@@ -128,7 +136,7 @@ def get_style_model_and_losses(cnn, normalization_mean, normalization_std,
 
 
 def get_input_optimizer(input_img):
-    optimizer = optim.LBFGS([input_img.requires_grad()])
+    optimizer = optim.LBFGS([input_img.requires_grad_()])
     return optimizer
 
 
