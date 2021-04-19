@@ -16,7 +16,15 @@ path = "../../data/style_transfer/image/"
 style_img = img_loader("./test_img/Albrecht_Dürer_10.jpg", device)
 content_img = img_loader("./test_img/El_Greco_1.jpg", device)
 
-print(style_img.shape)
-print(content_img.shape)
+def size():
+    print(style_img.shape)
+    print(content_img.shape)
 
 
+def show_image():
+    plt.figure()
+    imshow(style_img, title="style image")
+    plt.figure()
+    imshow(content_img, title="Content image")
+
+show_image()

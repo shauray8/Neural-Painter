@@ -17,4 +17,16 @@ def img_loader(image_name, device):
     return image.to(device, torch.float)
 
 
+unloader = transforms.ToPILImage()
+plt.ion()
+
+def imshow(tensor, title=None):
+    image = tensor.cpu().clone()
+    image = image.squeeze(0)
+    image = unloader(image)
+    if title is not None:
+        plt.title(title)
+    plt.imshow(image)
+    plt.pause(1)
+
 
