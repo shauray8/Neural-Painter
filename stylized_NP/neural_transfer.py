@@ -14,8 +14,8 @@ from utils import *
 device = "cpu"
 
 path = "../../data/style_transfer/image/"
-style_img = img_loader("./test_img/Andy_Warhol_19.jpg", device)
-content_img = img_loader("./test_img/Andy_Warhol_26.jpg", device)
+style_img = img_loader("./test_img/Albrecht_Dürer_10.jpg", device)
+content_img = img_loader("./test_img/El_Greco_1.jpg", device)
 
 def size():
     print(style_img.shape)
@@ -42,6 +42,7 @@ input_img = content_img.clone()
 #plt.figure()
 #imshow(input_img, title='Input Image')
 
+num_steps = 300
 
 def run_style_transfer(cnn, normalization_mean, normalization_std,
                        content_img, style_img, input_img, num_steps=300,
@@ -96,7 +97,7 @@ def run_style_transfer(cnn, normalization_mean, normalization_std,
 
 
 output = run_style_transfer(cnn, cnn_normalization_mean, cnn_normalization_std,
-                            content_img, style_img, input_img)
+                            content_img, style_img, input_img, num_steps)
 
 plt.figure()
 imshow(output, title='Output Image')

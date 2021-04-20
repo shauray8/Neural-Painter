@@ -8,7 +8,9 @@ import matplotlib.pyplot as plt
 import torchvision.transforms as transforms
 import torch.optim as optim
 
-imsize = 512
+imsize = 512 
+#device = "cuda"
+device = "cpu"
 
 loader = transforms.Compose([
     transforms.Resize(imsize),
@@ -76,7 +78,6 @@ class Normalization(nn.Module):
 
 content_layers_default = ['conv_4']
 style_layers_default = ['conv_1', 'conv_2', 'conv_3', 'conv_4', 'conv_5']
-device = "cpu"
 
 
 def get_style_model_and_losses(cnn, normalization_mean, normalization_std,
