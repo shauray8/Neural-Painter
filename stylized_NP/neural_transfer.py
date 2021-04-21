@@ -14,8 +14,8 @@ from utils import *
 #device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 device = "cpu"
 
-style = "./test_img/Albrecht_Dürer_10.jpg"
-content = "./test_img/El_Greco_1.jpg"
+style = "./test_img/Andy_Warhol_19.jpg"
+content = "./test_img/Diego_Velazquez_27.jpg"
 imgt = cv2.imread(content)
 H = imgt.shape[0]
 W = imgt.shape[1]
@@ -114,4 +114,4 @@ def make():
     plt.ioff()
     plt.show()
 
-run()
+make()
