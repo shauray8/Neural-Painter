@@ -95,12 +95,17 @@ def run_style_transfer(cnn, normalization_mean, normalization_std,
 
     return input_img
 
+def make():
+    output = run_style_transfer(cnn, cnn_normalization_mean, cnn_normalization_std,
+                                content_img, style_img, input_img, num_steps)
 
-output = run_style_transfer(cnn, cnn_normalization_mean, cnn_normalization_std,
-                            content_img, style_img, input_img, num_steps)
+    plt.figure()
+    imshow(output, title='Output Image')
 
-plt.figure()
-imshow(output, title='Output Image')
+    plt.ioff()
+    plt.show()
 
-plt.ioff()
-plt.show()
+
+
+size()
+show_image()

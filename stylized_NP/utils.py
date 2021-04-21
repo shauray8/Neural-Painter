@@ -13,9 +13,8 @@ imsize = 512
 device = "cpu"
 
 loader = transforms.Compose([
-    transforms.Resize(imsize),
-    transforms.ToTensor(),
-    transforms.RandomCrop(512,512)])
+    transforms.Resize([imsize, imsize]),
+    transforms.ToTensor(),])
 
 def img_loader(image_name, device):
     image = Image.open(image_name)
