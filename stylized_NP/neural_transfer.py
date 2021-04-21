@@ -5,6 +5,7 @@ import torch.optim as optim
 
 from PIL import Image
 import matplotlib.pyplot as plt
+import cv2
 
 import torchvision.transforms as transforms
 import torchvision.models as models
@@ -13,9 +14,17 @@ from utils import *
 #device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 device = "cpu"
 
+style = "./test_img/Albrecht_Dürer_10.jpg"
+content = "./test_img/El_Greco_1.jpg"
+imgt = cv2.imread(content)
+H = imgt.shape[0]
+W = imgt.shape[1]
+print(H, W)
+
 path = "../../data/style_transfer/image/"
-style_img = img_loader("./test_img/Albrecht_Dürer_10.jpg", device)
-content_img = img_loader("./test_img/El_Greco_1.jpg", device)
+style_img = img_loader(style, device, H, W)
+content_img = img_loader(content, device, H, W)
+H, W = content_img.shape[2:]
 
 def size():
     print(style_img.shape)
@@ -105,7 +114,4 @@ def make():
     plt.ioff()
     plt.show()
 
-
-
-size()
-show_image()
+run()

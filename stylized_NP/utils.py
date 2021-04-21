@@ -8,16 +8,16 @@ import matplotlib.pyplot as plt
 import torchvision.transforms as transforms
 import torch.optim as optim
 
-imsize = 512 
 #device = "cuda"
 device = "cpu"
 
-loader = transforms.Compose([
-    transforms.Resize([imsize, imsize]),
-    transforms.ToTensor(),])
 
-def img_loader(image_name, device):
+def img_loader(image_name, device, H, W):
     image = Image.open(image_name)
+    loader = transforms.Compose([
+            transforms.Resize([H, W]),
+            transforms.ToTensor(),])
+
     image = loader(image).unsqueeze(0)
     return image.to(device, torch.float)
 
