@@ -22,8 +22,8 @@ W = imgt.shape[1]
 print(H, W)
 
 path = "../../data/style_transfer/image/"
-style_img = img_loader(style, device, H, W)
-content_img = img_loader(content, device, H, W)
+style_img = img_loader(style, device,)
+content_img = img_loader(content, device,)
 H, W = content_img.shape[2:]
 
 def size():

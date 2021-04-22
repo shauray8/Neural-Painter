@@ -12,7 +12,7 @@ import torch.optim as optim
 device = "cpu"
 
 
-def img_loader(image_name, device, H, W):
+def img_loader(image_name, device, H=512, W=512):
     image = Image.open(image_name)
     loader = transforms.Compose([
             transforms.Resize([H, W]),
