@@ -7,7 +7,7 @@ here is the loss (i dont know if it is good wnough or i have to do some optimiza
 
 ![](./loss.png)
 
-here is an example of how this thing works 
+here is an example of how this thing works <br/>
 ![](./test_img/output.png)
 
 the size is [512, 512] because i was out of vram so i had to do this on my i5 10gen [SAD]
