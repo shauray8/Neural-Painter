@@ -3,11 +3,8 @@
 i was thinking can i impliment cycle gan, maybe later i'll try it for fun
 and with the current method in this [paper](https://arxiv.org/pdf/1705.08086.pdf) 
 <br/>
-here is the loss (i dont know if it is good wnough or i have to do some optimization)
 
-![](./loss.png)
-
-here is an example of how this thing works 
+here is an example of how this thing works <br/>
 ![](./test_img/output.png)
 
 the size is [512, 512] because i was out of vram so i had to do this on my i5 10gen [SAD]
